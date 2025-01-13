@@ -1,26 +1,24 @@
-// src/app/login/page.tsx
+// src/app/page.tsx
 
-"use client"; // This page uses client components
+"use client";
 
 import { signIn, useSession } from "next-auth/react";
-import Link from "next/link";
 import { useRouter } from 'next/navigation';
+import { useEffect } from "react";
 
 export default function LoginPage() {
   const { data: session } = useSession();
   const router = useRouter();
 
-  // If the user is already logged in, you might want to redirect them
+  useEffect(() => {
+    if (session) {
+      router.push('/dashboard');
+    }
+  }, [session, router]);
+
+  // While waiting for session, you might choose to render a loading state
   if (session) {
-    // Optionally, you can redirect client-side or simply show a message
-    // For example, using Next.js navigation:
-    router.push('/dashboard');
-    return (
-      <div>
-        <p>You are already logged in as {session.user?.name}</p>
-        <Link href="/dashboard">Go to Dashboard</Link>
-      </div>
-    );
+    return <p>Redirecting...</p>;
   }
 
   return (
