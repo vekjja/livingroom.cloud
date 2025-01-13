@@ -1,10 +1,10 @@
 // src/app/layout.tsx
 import "./globals.css";
 import type { Metadata } from "next";
-import NextAuthSessionProvider from "./providers/SessionProvider";
+import ClientProviders from "./ClientProviders";
 
 export const metadata: Metadata = {
-  title: "My App",
+  title: "Adventure Institute",
   description: "Login with Google example",
 };
 
@@ -16,9 +16,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <NextAuthSessionProvider>
+        <ClientProviders>
           {children}
-        </NextAuthSessionProvider>
+        </ClientProviders>
       </body>
     </html>
   );
