@@ -2,9 +2,12 @@
 
 "use client";
 
-import { signIn, useSession } from "next-auth/react";
-import { useRouter } from 'next/navigation';
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import Typography from "@mui/material/Typography";
+import TopBar from "./components/TopBar";
+import { Box } from "@mui/material";
 
 export default function LoginPage() {
   const { data: session } = useSession();
@@ -12,7 +15,7 @@ export default function LoginPage() {
 
   useEffect(() => {
     if (session) {
-      router.push('/dashboard');
+      router.push("/dashboard");
     }
   }, [session, router]);
 
@@ -22,14 +25,14 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen gap-4">
-      <h1 className="text-xl font-bold">Login</h1>
-      <button
-        onClick={() => signIn("google")}
-        className="border rounded p-2"
-      >
-        Sign in with Google
-      </button>
-    </div>
+    <Box>
+      <TopBar session={session} />
+      <Typography variant="h2" gutterBottom>
+        Adventure Institute
+      </Typography>
+      <Typography variant="body1" gutterBottom>
+        Your Journey Begins Here
+      </Typography>
+    </Box>
   );
 }

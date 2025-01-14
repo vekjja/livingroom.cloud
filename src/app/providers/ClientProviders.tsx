@@ -1,13 +1,14 @@
 // src/app/ClientProviders.tsx
 "use client";
 
-import { CacheProvider } from '@emotion/react';
-import CssBaseline from '@mui/material/CssBaseline';
+import { CacheProvider } from "@emotion/react";
+import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
 import createEmotionCache from "../createEmotionCache";
 import theme from "../theme";
-import NextAuthSessionProvider from "./providers/SessionProvider";
+import NextAuthSessionProvider from "./SessionProvider";
 
+// Create a client-side Emotion cache
 const clientSideEmotionCache = createEmotionCache();
 
 export default function ClientProviders({
@@ -19,9 +20,7 @@ export default function ClientProviders({
     <CacheProvider value={clientSideEmotionCache}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <NextAuthSessionProvider>
-          {children}
-        </NextAuthSessionProvider>
+        <NextAuthSessionProvider>{children}</NextAuthSessionProvider>
       </ThemeProvider>
     </CacheProvider>
   );

@@ -1,24 +1,22 @@
 // src/app/dashboard/page.tsx
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route"; // note the path here
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
-import Link from "next/link";
-import SignOutButton from "./SignOutButton";
+import TopBar from "../components/TopBar";
+import { Box } from "@mui/material";
 
 export default async function Dashboard() {
   const session = await getServerSession(authOptions);
 
-  // If not logged in, redirect to the login page
+  // If not logged in, redirect to /
   if (!session) {
     redirect("/");
   }
 
   return (
-    <main className="p-4">
-      <h1>Welcome, {session.user?.name}</h1>
-      <p>Your email: {session.user?.email}</p>
-      <SignOutButton />
-      <Link href="/">Back to Home</Link>
-    </main>
+    <Box>
+      <TopBar session={session} />
+      <h1>Dashboard</h1>
+    </Box>
   );
 }
