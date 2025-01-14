@@ -9,7 +9,7 @@ import Typography from "@mui/material/Typography";
 import TopBar from "./components/TopBar";
 import { Box } from "@mui/material";
 
-export default function LoginPage() {
+export default function HomePage() {
   const { data: session } = useSession();
   const router = useRouter();
 
