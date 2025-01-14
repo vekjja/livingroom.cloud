@@ -17,13 +17,16 @@ interface TopBarProps {
 export default function TopBar({ session }: TopBarProps) {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar
+        position="static"
+        sx={{ backgroundColor: "transparent", boxShadow: "none" }}
+      >
         <Toolbar>
           {session ? (
             <Box sx={{ display: "flex", alignItems: "center" }}>
               <Avatar
-                src={session.user?.image}
-                alt={session.user?.name}
+                src={session.user?.image || ""}
+                alt={session.user?.name || ""}
                 sx={{ marginRight: 2 }}
               />
               <Typography variant="h6" component="div">
