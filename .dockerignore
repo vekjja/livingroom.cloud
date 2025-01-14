@@ -1,0 +1,10 @@
+node_modules
+.github
+helm
+Dockerfile
+.dockerignore
+.gitignore
+.next
+.vscode
+.env
+.env.local
