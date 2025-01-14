@@ -8,7 +8,7 @@ replicaCount: 1
 image:
   repository: ghcr.io/seemywingz/livingroom.cloud
   pullPolicy: Always
-  tag: "latest"
+  tag: "develop"
 
 imagePullSecrets:
 - name: ghcr-secret
