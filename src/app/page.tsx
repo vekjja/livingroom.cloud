@@ -27,12 +27,14 @@ export default function LoginPage() {
   return (
     <Box>
       <TopBar session={session} />
-      <Typography variant="h2" gutterBottom>
-        Adventure Institute
-      </Typography>
-      <Typography variant="body1" gutterBottom>
-        Your Journey Begins Here
-      </Typography>
+      <Box margin={"18%"}>
+        <Typography variant="h2" gutterBottom>
+          Living Room Cloud
+        </Typography>
+        <Typography variant="body1" gutterBottom>
+          My Living Room, Your Cloud
+        </Typography>
+      </Box>
     </Box>
   );
 }

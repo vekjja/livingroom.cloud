@@ -4,10 +4,9 @@
 import { CacheProvider } from "@emotion/react";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
-import createEmotionCache from "../createEmotionCache";
-import theme from "../theme";
 import NextAuthSessionProvider from "./SessionProvider";
-
+import createEmotionCache from "../../lib/createEmotionCache";
+import theme from "../../lib/theme";
 // Create a client-side Emotion cache
 const clientSideEmotionCache = createEmotionCache();
 

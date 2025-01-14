@@ -4,8 +4,8 @@ import type { Metadata } from "next";
 import ClientProviders from "./providers/ClientProviders";
 
 export const metadata: Metadata = {
-  title: "Adventure Institute",
-  description: "Your journey to the Adventure Institute starts here.",
+  title: "Living Room Cloud",
+  description: "My Living Room, Your Cloud",
 };
 
 export default function RootLayout({

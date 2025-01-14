@@ -23,7 +23,7 @@ export default function TopBar({ session }: TopBarProps) {
       >
         <Toolbar>
           {session ? (
-            <Box sx={{ display: "flex", alignItems: "center" }}>
+            <Box sx={{ display: "flex", alignItems: "center", width: "100%" }}>
               <Avatar
                 src={session.user?.image || ""}
                 alt={session.user?.name || ""}
@@ -32,12 +32,15 @@ export default function TopBar({ session }: TopBarProps) {
               <Typography variant="h6" component="div">
                 Welcome, {session.user?.name}
               </Typography>
+              <Box sx={{ flexGrow: 1 }} />
+              <SignOutButton />
             </Box>
           ) : (
-            ""
+            <Box sx={{ display: "flex", alignItems: "center", width: "100%" }}>
+              <Box sx={{ flexGrow: 1 }} />
+              <SignInButton />
+            </Box>
           )}
-          <Box sx={{ flexGrow: 1 }} />
-          {session ? <SignOutButton /> : <SignInButton />}
         </Toolbar>
       </AppBar>
     </Box>
