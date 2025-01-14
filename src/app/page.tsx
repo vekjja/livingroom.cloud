@@ -32,7 +32,7 @@ export default function LoginPage() {
           Living Room Cloud
         </Typography>
         <Typography variant="body1" gutterBottom>
-          Our Living Room, Your Cloud
+          The Cloud Behind The Couch
         </Typography>
       </Box>
     </Box>
