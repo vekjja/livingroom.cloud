@@ -7,10 +7,20 @@ export const authOptions: NextAuthOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID || "",
       clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
+      authorization: {
+        params: {
+          redirect_uri:
+            process.env.NODE_ENV === "production"
+              ? "https://livingroom.cloud/api/auth/callback/google"
+              : "http://localhost:3000/api/auth/callback/google",
+        },
+      },
     }),
   ],
-  session: {
-    strategy: "jwt",
-  },
   secret: process.env.NEXTAUTH_SECRET,
+  callbacks: {
+    async redirect({ baseUrl }) {
+      return baseUrl;
+    },
+  },
 };
