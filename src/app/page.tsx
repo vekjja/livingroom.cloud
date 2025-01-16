@@ -19,7 +19,7 @@ export default async function HomePage() {
         <Box sx={{ flexGrow: 1 }} />
         <SignInButton />
       </Box>
-      <Box margin={"18%"}>
+      <Box margin={"18%"} textAlign="center">
         <Typography variant="h2" gutterBottom>
           Living Room Cloud
         </Typography>
