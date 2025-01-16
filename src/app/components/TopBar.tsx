@@ -13,10 +13,7 @@ interface TopBarProps {
 export default function TopBar({ session }: TopBarProps) {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar
-        position="static"
-        sx={{ backgroundColor: "transparent", boxShadow: "none" }}
-      >
+      <AppBar position="fixed">
         <Toolbar>
           <Box sx={{ display: "flex", alignItems: "center", width: "100%" }}>
             <Avatar
