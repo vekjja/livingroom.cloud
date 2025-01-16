@@ -1,15 +1,17 @@
 // src/theme.ts
 import { createTheme } from "@mui/material/styles";
 
-const theme = createTheme({
+export default createTheme({
+  colorSchemes: {
+    dark: true,
+  },
   palette: {
+    mode: "dark",
     primary: {
-      main: "#f2cca5",
+      main: "#ffd780",
     },
     secondary: {
       main: "#0afffb",
     },
   },
 });
-
-export default theme;

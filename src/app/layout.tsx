@@ -2,7 +2,9 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import ClientProviders from "./ClientProviders";
-import { Box, Link, Typography } from "@mui/material";
+import { ThemeProvider } from "@mui/material/styles";
+
+// import { Box, Link, Typography } from "@mui/material";
 
 export const metadata: Metadata = {
   title: "Living Room Cloud",
@@ -17,14 +19,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ClientProviders>{children}</ClientProviders>
-        <Box width="100%" textAlign="center" padding="1rem" marginTop="100vh">
-          <Link href="/privacy" color="inherit" underline="none">
-            <Typography variant="body2" sx={{ color: "text.secondary" }}>
-              Privacy Policy
-            </Typography>
-          </Link>
-        </Box>
+        <ClientProviders>
+          {children}
+
+          {/* Footer / Privacy link */}
+          {/* <Box width="100%" textAlign="center" padding="1rem">
+            <Link href="/privacy" color="inherit" underline="none">
+              <Typography variant="body2" sx={{ color: "text.secondary" }}>
+                Privacy Policy
+              </Typography>
+            </Link>
+          </Box> */}
+        </ClientProviders>
       </body>
     </html>
   );

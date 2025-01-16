@@ -1,3 +1,4 @@
+// src/app/ClientProviders.tsx
 "use client";
 
 import theme from "@/app/theme";
@@ -15,13 +16,13 @@ export default function ClientProviders({
   children: React.ReactNode;
 }) {
   return (
-    <SessionProvider>
-      <CacheProvider value={clientSideEmotionCache}>
+    <CacheProvider value={clientSideEmotionCache}>
+      <SessionProvider>
         <ThemeProvider theme={theme}>
           <CssBaseline />
           {children}
         </ThemeProvider>
-      </CacheProvider>
-    </SessionProvider>
+      </SessionProvider>
+    </CacheProvider>
   );
 }
