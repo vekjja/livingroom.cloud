@@ -1,27 +1,16 @@
-// src/app/page.tsx
-
-"use client";
-
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+// src/app/page.tsx (Server Component)
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
+import { redirect } from "next/navigation";
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
 import SignInButton from "./components/SignInButton";
 
-export default function HomePage() {
-  const { data: session } = useSession();
-  const router = useRouter();
+export default async function HomePage() {
+  const session = await getServerSession(authOptions);
 
-  useEffect(() => {
-    if (session) {
-      router.push("/dashboard");
-    }
-  }, [session, router]);
-
-  // While waiting for session, you might choose to render a loading state
   if (session) {
-    return <p>Redirecting...</p>;
+    redirect("/dashboard");
   }
 
   return (

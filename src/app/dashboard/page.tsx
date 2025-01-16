@@ -1,6 +1,6 @@
 // src/app/dashboard/page.tsx
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/lib/authOptions";
+import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
 import { redirect } from "next/navigation";
 import TopBar from "../components/TopBar";
 import { Box } from "@mui/material";

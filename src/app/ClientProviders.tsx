@@ -1,13 +1,13 @@
 "use client";
 
+import theme from "@/app/theme";
+import createCache from "@emotion/cache";
 import { CacheProvider } from "@emotion/react";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
-import createEmotionCache from "@/lib/createEmotionCache";
-import theme from "@/lib/theme";
 import { SessionProvider } from "next-auth/react";
 
-const clientSideEmotionCache = createEmotionCache();
+const clientSideEmotionCache = createCache({ key: "css", prepend: true });
 
 export default function ClientProviders({
   children,
