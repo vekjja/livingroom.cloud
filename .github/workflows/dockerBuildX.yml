@@ -2,10 +2,12 @@ name: Docker BuildX
 
 on:
   push:
-    branches:
-      - "develop"
     tags:
       - "**"
+  pull_request:
+    branches:
+      - main
+      - develop
 
 env:
   REGISTRY: ghcr.io
