@@ -4,7 +4,6 @@ import { authOptions } from "@/lib/authOptions";
 import { redirect } from "next/navigation";
 import TopBar from "../components/TopBar";
 import { Box } from "@mui/material";
-import DashboardClientWrapper from "./DashboardClientWrapper";
 
 export default async function Dashboard() {
   const session = await getServerSession(authOptions);
@@ -17,7 +16,6 @@ export default async function Dashboard() {
   return (
     <Box>
       <TopBar session={session} />
-      <DashboardClientWrapper />
     </Box>
   );
 }

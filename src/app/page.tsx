@@ -6,8 +6,8 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import Typography from "@mui/material/Typography";
-import TopBar from "./components/TopBar";
-import { Box, Link } from "@mui/material";
+import { Box } from "@mui/material";
+import SignInButton from "./components/SignInButton";
 
 export default function HomePage() {
   const { data: session } = useSession();
@@ -26,7 +26,10 @@ export default function HomePage() {
 
   return (
     <Box>
-      <TopBar session={session} />
+      <Box sx={{ display: "flex", alignItems: "center", width: "100%" }}>
+        <Box sx={{ flexGrow: 1 }} />
+        <SignInButton />
+      </Box>
       <Box margin={"18%"}>
         <Typography variant="h2" gutterBottom>
           Living Room Cloud

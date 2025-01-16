@@ -1,18 +1,13 @@
 // src/app/components/TopBar.tsx
 "use client";
 
-import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
+import { AppBar, Avatar, Box, Toolbar, Typography } from "@mui/material";
 import { Session } from "next-auth";
-import SignOutButton from "./SignOutButton";
-import SignInButton from "./SignInButton";
-import { Avatar, Typography } from "@mui/material";
 import DonateButton from "./DonateButton";
+import SignOutButton from "./SignOutButton";
 
 interface TopBarProps {
-  session: Session | null;
+  session: Session;
 }
 
 export default function TopBar({ session }: TopBarProps) {
@@ -23,26 +18,19 @@ export default function TopBar({ session }: TopBarProps) {
         sx={{ backgroundColor: "transparent", boxShadow: "none" }}
       >
         <Toolbar>
-          {session ? (
-            <Box sx={{ display: "flex", alignItems: "center", width: "100%" }}>
-              <Avatar
-                src={session.user?.image || ""}
-                alt={session.user?.name || ""}
-                sx={{ marginRight: 2 }}
-              />
-              <Typography variant="h6" component="div">
-                Welcome, {session.user?.name}
-              </Typography>
-              <Box sx={{ flexGrow: 1 }} />
-              <SignOutButton />
-              <DonateButton />
-            </Box>
-          ) : (
-            <Box sx={{ display: "flex", alignItems: "center", width: "100%" }}>
-              <Box sx={{ flexGrow: 1 }} />
-              <SignInButton />
-            </Box>
-          )}
+          <Box sx={{ display: "flex", alignItems: "center", width: "100%" }}>
+            <Avatar
+              src={session.user?.image || ""}
+              alt={session.user?.name || ""}
+              sx={{ marginRight: 2 }}
+            />
+            <Typography variant="h6" component="div">
+              Welcome, {session.user?.name}
+            </Typography>
+            <Box sx={{ flexGrow: 1 }} />
+            <DonateButton />
+            <SignOutButton />
+          </Box>
         </Toolbar>
       </AppBar>
     </Box>

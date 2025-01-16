@@ -1,12 +1,12 @@
 // src/app/layout.tsx (server component)
 import "./globals.css";
 import type { Metadata } from "next";
-import ClientProviders from "./providers/ClientProviders";
+import ClientProviders from "./ClientProviders";
 import { Box, Link, Typography } from "@mui/material";
 
 export const metadata: Metadata = {
   title: "Living Room Cloud",
-  description: "My Living Room, Your Cloud",
+  description: "The Cloud Behind The Couch",
 };
 
 export default function RootLayout({
