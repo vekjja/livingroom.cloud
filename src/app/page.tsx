@@ -1,4 +1,4 @@
-// src/app/page.tsx (Server Component)
+// src/app/page.tsx
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
 import { redirect } from "next/navigation";
