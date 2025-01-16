@@ -9,6 +9,7 @@ import { Session } from "next-auth";
 import SignOutButton from "./SignOutButton";
 import SignInButton from "./SignInButton";
 import { Avatar, Typography } from "@mui/material";
+import DonateButton from "./DonateButton";
 
 interface TopBarProps {
   session: Session | null;
@@ -34,6 +35,7 @@ export default function TopBar({ session }: TopBarProps) {
               </Typography>
               <Box sx={{ flexGrow: 1 }} />
               <SignOutButton />
+              <DonateButton />
             </Box>
           ) : (
             <Box sx={{ display: "flex", alignItems: "center", width: "100%" }}>

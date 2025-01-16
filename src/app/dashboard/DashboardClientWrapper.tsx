@@ -4,12 +4,9 @@
 import dynamic from "next/dynamic";
 
 // Dynamically import DashboardContent
-const DynamicDashboardContent = dynamic(
-  () => import("../components/DashboardContent"),
-  {
-    ssr: false, // This disables SSR for DashboardContent
-  }
-);
+const DynamicDashboardContent = dynamic(() => import("./DashboardContent"), {
+  ssr: false, // This disables SSR for DashboardContent
+});
 
 export default function DashboardClientWrapper() {
   return <DynamicDashboardContent />;
