@@ -62,7 +62,7 @@ env:
   valueFrom:
     secretKeyRef:
       name: psql-db-url
-      key: client-secret
+      key: url
 
 ingress:
   enabled: true
