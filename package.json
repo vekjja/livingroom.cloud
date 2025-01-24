@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "local-build": "./scripts/docker-build.sh",
-    "db-migrate": "export $(cat .env.local | xargs) && npx prisma db push",
+    "db-push": "export $(cat .env.local | xargs) && npx prisma db push",
     "db-reset": "export $(cat .env.local | xargs) && npx prisma migrate reset --force && npx prisma db push"
   },
   "dependencies": {

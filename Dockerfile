@@ -24,5 +24,5 @@ COPY --from=builder /app/prisma ./prisma
 
 EXPOSE 3000
 
-# Start the Next.js server
-CMD ["npm", "run", "start"]
+# Start the server after pushing the database schema
+CMD ["sh", "-c", "npm run db-push && npm run start"]
