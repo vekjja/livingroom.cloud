@@ -5,6 +5,9 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 
+# Generate Prisma client
+RUN npx prisma generate
+
 # Copy source code
 COPY . .
 # Build the Next.js app (production build)
@@ -18,6 +21,7 @@ WORKDIR /app
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package*.json ./
+COPY --from=builder /prisma ./prisma
 
 EXPOSE 3000
 
