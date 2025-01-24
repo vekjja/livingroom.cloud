@@ -8,7 +8,7 @@ replicaCount: 1
 image:
   repository: ghcr.io/seemywingz/livingroom.cloud
   pullPolicy: Always
-  tag: "develop"
+  tag: "development"
 
 imagePullSecrets:
 - name: ghcr-secret
@@ -58,6 +58,11 @@ env:
     secretKeyRef:
       name: google-client-secret
       key: client-secret
+- name: DB_URL
+  valueFrom:
+    secretKeyRef:
+      name: psql-db-url
+      key: url
 
 ingress:
   enabled: true
