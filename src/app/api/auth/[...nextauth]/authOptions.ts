@@ -24,12 +24,14 @@ export const authOptions: NextAuthOptions = {
           name: user.name,
           google_id: user.id,
           image: user.image,
+          logins: { increment: 1 },
         },
         create: {
           email: user.email,
           name: user.name,
           google_id: user.id,
           image: user.image,
+          logins: 1,
         },
       });
     },
