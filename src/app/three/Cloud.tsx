@@ -18,7 +18,7 @@ function renderCloud(
 ) {
   const loader = new GLTFLoader();
   loader.load(
-    "/gltf/cloud/scene.gltf", // Ensure the correct path
+    `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/gltf/cloud/scene.gltf`, // Ensure the correct path
     (gltf) => {
       const model = gltf.scene;
       // Compute model bounding box
