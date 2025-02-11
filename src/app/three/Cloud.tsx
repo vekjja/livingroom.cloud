@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import { Box } from "@mui/material";
 import ThreeScene from "./Scene";
 import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
@@ -23,7 +22,7 @@ function renderCloud(
     (gltf) => {
       const model = gltf.scene;
 
-      // Iterate over all children and apply properties to Mesh objects only
+      // Ensure model receives and casts shadows
       model.traverse((child) => {
         if ((child as THREE.Mesh).isMesh) {
           const mesh = child as THREE.Mesh;
@@ -32,9 +31,14 @@ function renderCloud(
         }
       });
 
-      model.position.set(0, 1, 0);
+      model.position.set(0, 0, -1);
       scene.add(model);
 
+      // Adjust Camera Positioning
+      camera.position.set(0, 0, 3); // Move camera back to fit model
+      camera.lookAt(new THREE.Vector3(0, 0, 0));
+
+      // Add Lighting
       const light = new THREE.DirectionalLight(0xffffff, 1);
       light.position.set(0, 10, 10);
       scene.add(light);
@@ -45,7 +49,7 @@ function renderCloud(
 
       // Animation loop
       const animate = () => {
-        model.rotation.y += 0.001;
+        model.rotation.y += 0.005; // Smooth rotation
         renderer.render(scene, camera);
         requestRef.current = requestAnimationFrame(animate);
       };
@@ -60,16 +64,6 @@ function renderCloud(
 
 export default function Cloud({ color = 0xffff, alpha = false }: CloudProps) {
   return (
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        width: "100%",
-        height: "50vh",
-      }}
-    >
-      <ThreeScene color={color} alpha={alpha} renderFunction={renderCloud} />
-    </Box>
+    <ThreeScene color={color} alpha={alpha} renderFunction={renderCloud} />
   );
 }
