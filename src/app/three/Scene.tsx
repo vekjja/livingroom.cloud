@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
-import { alpha, Box } from "@mui/material";
+import { Box } from "@mui/material";
 
 // Define Prop Types
 interface ThreeSceneProps {
