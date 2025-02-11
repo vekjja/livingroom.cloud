@@ -33,31 +33,8 @@ export const authOptions: NextAuthOptions = {
     //   from: process.env.EMAIL_FROM || "",
     // }),
     GoogleProvider({
-      clientId: process.env.GOOGLE_ID || "",
-      clientSecret: process.env.GOOGLE_SECRET || "",
-    }),
-    DiscordProvider({
-      clientId: process.env.DISCORD_ID || "",
-      clientSecret: process.env.DISCORD_SECRET || "",
-    }),
-    LinkedInProvider({
-      clientId: process.env.LINKEDIN_ID || "",
-      clientSecret: process.env.LINKEDIN_SECRET || "",
-      client: { token_endpoint_auth_method: "client_secret_post" },
-      issuer: "https://www.linkedin.com",
-      profile: (profile: LinkedInProfile) => ({
-        id: profile.sub,
-        name: profile.name,
-        email: profile.email,
-        image: profile.picture,
-      }),
-      wellKnown:
-        "https://www.linkedin.com/oauth/.well-known/openid-configuration",
-      authorization: {
-        params: {
-          scope: "openid profile email",
-        },
-      },
+      clientId: process.env.GOOGLE_CLIENT_ID || "",
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
     }),
     DiscordProvider({
       clientId: process.env.DISCORD_CLIENT_ID || "",

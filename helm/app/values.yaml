@@ -8,7 +8,7 @@ replicaCount: 1
 image:
   repository: ghcr.io/seemywingz/livingroom.cloud
   pullPolicy: Always
-  tag: "v0.1.2"
+  tag: "development"
 
 imagePullSecrets:
 - name: ghcr-secret
@@ -114,6 +114,14 @@ readinessProbe:
   httpGet:
     path: /
     port: http
+
+startupProbe:
+  httpGet:
+    path: /
+    port: http
+  initialDelaySeconds: 45
+  periodSeconds: 10
+  failureThreshold: 30
 
 autoscaling:
   enabled: false
