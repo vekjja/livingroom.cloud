@@ -33,16 +33,16 @@ export const authOptions: NextAuthOptions = {
       from: process.env.EMAIL_FROM || "",
     }),
     GoogleProvider({
-      clientId: process.env.GOOGLE_ID || "",
-      clientSecret: process.env.GOOGLE_SECRET || "",
+      clientId: process.env.GOOGLE_CLIENT_ID || "",
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
     }),
     DiscordProvider({
-      clientId: process.env.DISCORD_ID || "",
-      clientSecret: process.env.DISCORD_SECRET || "",
+      clientId: process.env.DISCORD_CLIENT_ID || "",
+      clientSecret: process.env.DISCORD_CLIENT_SECRET || "",
     }),
     LinkedInProvider({
-      clientId: process.env.LINKEDIN_ID || "",
-      clientSecret: process.env.LINKEDIN_SECRET || "",
+      clientId: process.env.LINKEDIN_CLIENT_ID || "",
+      clientSecret: process.env.LINKEDIN_CLIENT_SECRET || "",
       client: { token_endpoint_auth_method: "client_secret_post" },
       issuer: "https://www.linkedin.com",
       profile: (profile: LinkedInProfile) => ({
@@ -60,5 +60,5 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   ],
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.NEXTAUTH_CLIENT_SECRET,
 };

@@ -58,11 +58,21 @@ env:
     secretKeyRef:
       name: google-client-secret
       key: client-secret
-- name: DB_URL
+- name: DATABASE_URL
   valueFrom:
     secretKeyRef:
       name: psql-db-url
       key: url
+- name: LINKEDIN_CLIENT_ID
+  valueFrom:
+    secretKeyRef:
+      name: linkedin-client-id
+      key: client-id
+- name: LINKEDIN_CLIENT_SECRET
+  valueFrom:
+    secretKeyRef:
+      name: linkedin-client-secret
+      key: client-secret
 
 ingress:
   enabled: true
