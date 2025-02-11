@@ -63,6 +63,7 @@ const ThreeScene = ({
       renderer.setSize(mount.clientWidth, mount.clientHeight);
     };
     window.addEventListener("resize", handleResize);
+    handleResize(); // Ensure the scene fits initially
 
     return () => {
       if (rendererRef.current) {
@@ -73,6 +74,7 @@ const ThreeScene = ({
       }
       if (requestId) cancelAnimationFrame(requestId);
       if (requestRef.current) cancelAnimationFrame(requestRef.current);
+      window.removeEventListener("resize", handleResize);
     };
   }, [color, alpha, renderFunction]);
 

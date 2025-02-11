@@ -28,7 +28,15 @@ export default async function HomePage() {
         <Typography variant="body1" gutterBottom>
           The Cloud Behind The Couch
         </Typography>
-        <Box sx={{ width: "100%", height: "50vh" }}>
+        <Box
+          sx={{
+            width: "100%",
+            height: "40vh",
+            top: "1%",
+            zIndex: -1,
+            position: "relative",
+          }}
+        >
           <Cloud alpha={true} />
         </Box>
       </Box>
