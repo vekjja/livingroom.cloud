@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
 import SignInButton from "./components/SignInButton";
 import GitHubButton from "./components/GitHubButton";
-import Box3D from "./three/Box3D";
+import Cloud from "./three/Cloud";
 
 export default async function HomePage() {
   const session = await getServerSession(authOptions);
@@ -28,7 +28,7 @@ export default async function HomePage() {
         <Typography variant="body1" gutterBottom>
           The Cloud Behind The Couch
         </Typography>
-        <Box3D alpha={true} />
+        <Cloud alpha={true} />
       </Box>
     </Box>
   );
