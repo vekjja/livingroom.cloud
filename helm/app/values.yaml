@@ -9,7 +9,7 @@ replicaCount: 1
 image:
   repository: ghcr.io/seemywingz/livingroom.cloud
   pullPolicy: Always
-  tag: "latest"
+  tag: "development"
 
 imagePullSecrets:
 - name: ghcr-secret
@@ -120,7 +120,7 @@ startupProbe:
   httpGet:
     path: /
     port: http
-  initialDelaySeconds: 27
+  initialDelaySeconds: 9
   periodSeconds: 10
   failureThreshold: 30
 
