@@ -14,7 +14,7 @@ model User {
   id            String  @id @default(uuid())
   email         String  @unique
   name          String?
-  google_id     String?
+  provider_id   String?
   image         String?
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt

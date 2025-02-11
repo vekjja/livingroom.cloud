@@ -13,6 +13,7 @@ import {
 import { useState } from "react";
 import GoogleIcon from "@mui/icons-material/Google";
 import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 export default function SignInButton() {
   const [open, setOpen] = useState(false);
@@ -46,6 +47,13 @@ export default function SignInButton() {
             onClick={() => signIn("discord")}
           >
             {<SportsEsportsIcon />} Discord
+          </Button>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={() => signIn("linkedin")}
+          >
+            {<LinkedInIcon />} LinkedIn
           </Button>
         </DialogContent>
         <DialogActions>
