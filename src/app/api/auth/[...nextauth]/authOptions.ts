@@ -15,7 +15,7 @@ export const prisma = globalForPrisma.prisma || new PrismaClient();
 if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;
 
 //  Redirect URL for OAuth providers
-//  http://localhost:3000/api/auth/callback/[provider]
+//  https://localhost:3000/api/auth/callback/[provider]
 //  http://livingroom.cloud/api/auth/callback/[provider]
 
 export const authOptions: NextAuthOptions = {

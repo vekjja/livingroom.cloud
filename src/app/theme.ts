@@ -11,7 +11,16 @@ export default createTheme({
       main: "#0afffb",
     },
     secondary: {
-      main: "#ffd780",
+      main: "#414141",
+    },
+    info: {
+      main: "#bbbbbb",
+    },
+    success: {
+      main: "#58ffb4",
+    },
+    error: {
+      main: "#ff3561",
     },
   },
 });
