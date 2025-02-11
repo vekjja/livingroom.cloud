@@ -8,10 +8,10 @@ export default createTheme({
   palette: {
     mode: "dark",
     primary: {
-      main: "#ffd780",
+      main: "#0afffb",
     },
     secondary: {
-      main: "#0afffb",
+      main: "#ffd780",
     },
   },
 });
