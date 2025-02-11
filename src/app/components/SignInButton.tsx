@@ -59,7 +59,7 @@ export default function SignInButton() {
           </Typography>
         </DialogTitle>
         <DialogContent>
-          <TextField
+          {/* <TextField
             margin="normal"
             required
             id="email"
@@ -80,7 +80,7 @@ export default function SignInButton() {
           >
             Sign In with Email
           </Button>
-          OR
+          OR */}
           <Button
             fullWidth
             variant="contained"
