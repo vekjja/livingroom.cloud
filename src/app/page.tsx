@@ -29,7 +29,17 @@ export default async function HomePage() {
         <Typography variant="body1" gutterBottom>
           The Cloud Behind The Couch
         </Typography>
-        <ThreeScene />
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
+            height: "50vh",
+          }}
+        >
+          <ThreeScene color={0x0afffb} alpha={true} />
+        </Box>
       </Box>
     </Box>
   );
