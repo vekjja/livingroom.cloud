@@ -18,9 +18,21 @@ function renderCloud(
 ) {
   const loader = new GLTFLoader();
   loader.load(
-    "/gltf/cloud/scene.gltf", // Ensure the correct path
+    `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/gltf/cloud/scene.gltf`, // Ensure the correct path
     (gltf) => {
       const model = gltf.scene;
+      // Compute model bounding box
+      const box = new THREE.Box3().setFromObject(model);
+      const size = box.getSize(new THREE.Vector3());
+      const center = box.getCenter(new THREE.Vector3());
+
+      // Normalize size
+      const maxSize = Math.max(size.x * 0.8, size.y * 0.08, size.z);
+      const scaleFactor = 2 / maxSize; // Adjust scale to fit viewport
+      model.scale.set(scaleFactor, scaleFactor, scaleFactor);
+
+      // Recenter model to the origin
+      model.position.sub(center.multiplyScalar(scaleFactor));
 
       // Ensure model receives and casts shadows
       model.traverse((child) => {
@@ -31,7 +43,7 @@ function renderCloud(
         }
       });
 
-      model.position.set(0, 0, -1);
+      model.position.set(0, 0, 0);
       scene.add(model);
 
       // Adjust Camera Positioning

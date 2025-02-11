@@ -29,7 +29,7 @@ const ThreeScene = ({
 
   useEffect(() => {
     const mount = mountRef.current;
-    const requestId = requestRef.current;
+    const initialRequestId = requestRef.current;
     if (!mount) return;
 
     // Scene, Camera, Renderer setup
@@ -63,6 +63,7 @@ const ThreeScene = ({
       renderer.setSize(mount.clientWidth, mount.clientHeight);
     };
     window.addEventListener("resize", handleResize);
+    handleResize(); // Ensure the scene fits initially
 
     return () => {
       if (rendererRef.current) {
@@ -71,8 +72,8 @@ const ThreeScene = ({
       if (mount) {
         mount.removeChild(renderer.domElement);
       }
-      if (requestId) cancelAnimationFrame(requestId);
-      if (requestRef.current) cancelAnimationFrame(requestRef.current);
+      if (initialRequestId) cancelAnimationFrame(initialRequestId);
+      window.removeEventListener("resize", handleResize);
     };
   }, [color, alpha, renderFunction]);
 

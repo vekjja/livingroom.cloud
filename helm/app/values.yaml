@@ -1,6 +1,7 @@
 # Default values for livingroom.cloud.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
+#  helm upgrade --install livingroom-cloud . -f values.yaml
 
 # This will set the replicaset count more information can be found here: https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/
 replicaCount: 1
@@ -114,7 +115,7 @@ readinessProbe:
   httpGet:
     path: /
     port: http
-  initialDelaySeconds: 27
+  initialDelaySeconds: 18
   periodSeconds: 10
   failureThreshold: 30
 
@@ -122,7 +123,7 @@ startupProbe:
   httpGet:
     path: /
     port: http
-  initialDelaySeconds: 27
+  initialDelaySeconds: 9
   periodSeconds: 10
   failureThreshold: 30
 
