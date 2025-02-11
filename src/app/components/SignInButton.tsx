@@ -8,7 +8,7 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
-  TextField,
+  // TextField,
   Avatar,
   Typography,
 } from "@mui/material";
@@ -20,7 +20,7 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 export default function SignInButton() {
   const [open, setOpen] = useState(false);
-  const [email, setEmail] = useState("");
+  // const [email, setEmail] = useState("");
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -30,13 +30,13 @@ export default function SignInButton() {
     setOpen(false);
   };
 
-  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value);
-  };
+  // const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   setEmail(event.target.value);
+  // };
 
-  const handleEmailSignIn = () => {
-    signIn("email", { email });
-  };
+  // const handleEmailSignIn = () => {
+  //   signIn("email", { email });
+  // };
 
   return (
     <Box>
