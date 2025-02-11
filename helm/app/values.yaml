@@ -41,6 +41,11 @@ service:
 env:
 - name: NODE_ENV
   value: production
+- name: DATABASE_URL
+  valueFrom:
+    secretKeyRef:
+      name: psql-db-url
+      key: url
 - name: NEXTAUTH_URL
   value: https://livingroom.cloud
 - name: NEXTAUTH_SECRET
@@ -58,11 +63,6 @@ env:
     secretKeyRef:
       name: google-client-secret
       key: client-secret
-- name: DATABASE_URL
-  valueFrom:
-    secretKeyRef:
-      name: psql-db-url
-      key: url
 - name: LINKEDIN_CLIENT_ID
   valueFrom:
     secretKeyRef:
