@@ -48,11 +48,11 @@ env:
       key: url
 - name: NEXTAUTH_URL
   value: https://livingroom.cloud
-- name: NEXTAUTH_SECRET
+- name: NEXTAUTH_CLIENT_SECRET
   valueFrom:
     secretKeyRef:
-      name: nextauth-secret
-      key: secret
+      name: nextauth-client-secret
+      key: client-secret
 - name: GOOGLE_CLIENT_ID
   valueFrom:
     secretKeyRef:
