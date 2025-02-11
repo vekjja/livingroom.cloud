@@ -1,5 +1,5 @@
-# Load environment variables from .env.local
-export $(grep -v '^#' .env.local | xargs)
+# Load environment variables from .env
+export $(grep -v '^#' .env | xargs)
 
 kubectl create secret docker-registry ghcr-secret \
   --docker-server=ghcr.io \
