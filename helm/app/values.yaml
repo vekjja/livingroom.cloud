@@ -8,7 +8,7 @@ replicaCount: 1
 image:
   repository: ghcr.io/seemywingz/livingroom.cloud
   pullPolicy: Always
-  tag: "v0.1.2"
+  tag: "development"
 
 imagePullSecrets:
 - name: ghcr-secret
@@ -41,13 +41,18 @@ service:
 env:
 - name: NODE_ENV
   value: production
-- name: NEXTAUTH_URL
-  value: https://livingroom.cloud
-- name: NEXTAUTH_SECRET
+- name: DATABASE_URL
   valueFrom:
     secretKeyRef:
-      name: nextauth-secret
-      key: secret
+      name: psql-db-url
+      key: url
+- name: NEXTAUTH_URL
+  value: https://livingroom.cloud
+- name: NEXTAUTH_CLIENT_SECRET
+  valueFrom:
+    secretKeyRef:
+      name: nextauth-client-secret
+      key: client-secret
 - name: GOOGLE_CLIENT_ID
   valueFrom:
     secretKeyRef:
@@ -58,11 +63,6 @@ env:
     secretKeyRef:
       name: google-client-secret
       key: client-secret
-- name: DATABASE_URL
-  valueFrom:
-    secretKeyRef:
-      name: psql-db-url
-      key: url
 - name: LINKEDIN_CLIENT_ID
   valueFrom:
     secretKeyRef:
@@ -114,6 +114,17 @@ readinessProbe:
   httpGet:
     path: /
     port: http
+  initialDelaySeconds: 27
+  periodSeconds: 10
+  failureThreshold: 30
+
+startupProbe:
+  httpGet:
+    path: /
+    port: http
+  initialDelaySeconds: 27
+  periodSeconds: 10
+  failureThreshold: 30
 
 autoscaling:
   enabled: false

@@ -51,7 +51,7 @@ export default function SignInButton() {
             alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
+          <Avatar sx={{ m: 1, bgcolor: "info.main" }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
@@ -107,7 +107,7 @@ export default function SignInButton() {
           </Button>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="secondary">
+          <Button onClick={handleClose} color="info">
             Cancel
           </Button>
         </DialogActions>
