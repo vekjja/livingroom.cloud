@@ -8,7 +8,7 @@ replicaCount: 1
 image:
   repository: ghcr.io/seemywingz/livingroom.cloud
   pullPolicy: Always
-  tag: "development"
+  tag: "v0.1.2"
 
 imagePullSecrets:
 - name: ghcr-secret
@@ -72,6 +72,16 @@ env:
   valueFrom:
     secretKeyRef:
       name: linkedin-client-secret
+      key: client-secret
+- name: DISCORD_CLIENT_ID
+  valueFrom:
+    secretKeyRef:
+      name: discord-client-id
+      key: client-id
+- name: DISCORD_CLIENT_SECRET
+  valueFrom:
+    secretKeyRef:
+      name: discord-client-secret
       key: client-secret
 
 ingress:
