@@ -8,6 +8,8 @@ import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 interface CloudProps {
   color?: number;
   alpha?: boolean;
+  width?: number;
+  height?: number;
 }
 
 function renderCloud(
@@ -74,8 +76,19 @@ function renderCloud(
   );
 }
 
-export default function Cloud({ color = 0xffff, alpha = false }: CloudProps) {
+export default function Cloud({
+  color = 0xffff,
+  alpha = false,
+  width,
+  height,
+}: CloudProps) {
   return (
-    <ThreeScene color={color} alpha={alpha} renderFunction={renderCloud} />
+    <ThreeScene
+      color={color}
+      alpha={alpha}
+      width={width}
+      height={height}
+      renderFunction={renderCloud}
+    />
   );
 }

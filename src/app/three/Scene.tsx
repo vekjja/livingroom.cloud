@@ -8,6 +8,8 @@ import { Box } from "@mui/material";
 interface ThreeSceneProps {
   color?: number;
   alpha?: boolean;
+  width?: number;
+  height?: number;
   renderFunction?: (
     scene: THREE.Scene,
     camera: THREE.Camera,
@@ -19,6 +21,8 @@ interface ThreeSceneProps {
 const ThreeScene = ({
   color = 0x00ff00,
   alpha = false,
+  width,
+  height,
   renderFunction = undefined,
 }: ThreeSceneProps) => {
   const mountRef = useRef<HTMLDivElement>(null);
@@ -38,7 +42,7 @@ const ThreeScene = ({
 
     const camera = new THREE.PerspectiveCamera(
       75,
-      mount.clientWidth / mount.clientHeight,
+      (width || mount.clientWidth) / (height || mount.clientHeight),
       0.1,
       1000
     );
@@ -46,7 +50,7 @@ const ThreeScene = ({
     cameraRef.current = camera;
 
     const renderer = new THREE.WebGLRenderer({ alpha });
-    renderer.setSize(mount.clientWidth, mount.clientHeight);
+    renderer.setSize(width || mount.clientWidth, height || mount.clientHeight);
     rendererRef.current = renderer;
     mount.appendChild(renderer.domElement);
 
@@ -58,9 +62,13 @@ const ThreeScene = ({
     // Resize Handler
     const handleResize = () => {
       if (!mount || !cameraRef.current || !rendererRef.current) return;
-      camera.aspect = mount.clientWidth / mount.clientHeight;
+      camera.aspect =
+        (width || mount.clientWidth) / (height || mount.clientHeight);
       camera.updateProjectionMatrix();
-      renderer.setSize(mount.clientWidth, mount.clientHeight);
+      renderer.setSize(
+        width || mount.clientWidth,
+        height || mount.clientHeight
+      );
     };
     window.addEventListener("resize", handleResize);
     handleResize(); // Ensure the scene fits initially
@@ -75,14 +83,14 @@ const ThreeScene = ({
       if (initialRequestId) cancelAnimationFrame(initialRequestId);
       window.removeEventListener("resize", handleResize);
     };
-  }, [color, alpha, renderFunction]);
+  }, [color, alpha, width, height, renderFunction]);
 
   return (
     <Box
       ref={mountRef}
       sx={{
-        width: "100%",
-        height: "100%",
+        width: width ? `${width}px` : "100%",
+        height: height ? `${height}px` : "100%",
       }}
     />
   );
