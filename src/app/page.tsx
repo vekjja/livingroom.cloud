@@ -3,7 +3,7 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
 import { redirect } from "next/navigation";
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
-import SignInButton from "./components/SignInButton";
+// import SignInButton from "./components/SignInButton";
 import GitHubButton from "./components/GitHubButton";
 import Cloud from "./three/Cloud";
 
