@@ -18,7 +18,7 @@ export default async function HomePage() {
     <Box>
       <Box sx={{ display: "flex", alignItems: "center", width: "100%" }}>
         <Box sx={{ flexGrow: 1 }} />
-        <SignInButton />
+        {/* <SignInButton /> */}
         <GitHubButton />
       </Box>
       <Box margin={"18%"} textAlign="center">
