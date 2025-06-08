@@ -3,7 +3,7 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
 import { redirect } from "next/navigation";
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
-// import SignInButton from "./components/SignInButton";
+import SignInButton from "./components/SignInButton";
 import GitHubButton from "./components/GitHubButton";
 import Cloud from "./three/Cloud";
 
@@ -18,7 +18,7 @@ export default async function HomePage() {
     <Box>
       <Box sx={{ display: "flex", alignItems: "center", width: "100%" }}>
         <Box sx={{ flexGrow: 1 }} />
-        {/* <SignInButton /> */}
+        <SignInButton />
         <GitHubButton />
       </Box>
       <Box margin={"18%"} textAlign="center">
