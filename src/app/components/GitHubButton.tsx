@@ -12,8 +12,9 @@ export default function GitHubButton() {
         color="secondary"
         href="https://github.com/seemywingz/livingroom.cloud"
         target="_blank"
+        sx={{ minWidth: "auto", padding: "6px 12px" }}
       >
-        <GitHubIcon />
+        <GitHubIcon fontSize="small" />
       </Button>
     </Box>
   );
