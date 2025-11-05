@@ -1,7 +1,7 @@
 # Default values for livingroom.cloud.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
-#  helm upgrade --install livingroom-cloud . -f values.yaml
+#  helm upgrade --install livingroom-cloud . -f values.yaml --namespace livingroom-cloud --create-namespace
 
 # This will set the replicaset count more information can be found here: https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/
 replicaCount: 1
@@ -88,7 +88,7 @@ env:
 ingress:
   enabled: true
   className: "nginx"
-  annotations: { cert-manager.io/cluster-issuer: "cloudlfare-letsencrypt-production" }
+  annotations: { cert-manager.io/cluster-issuer: "cloudflare-letsencrypt-production" }
   hosts:
   - host: livingroom.cloud
     paths:
