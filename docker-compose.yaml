@@ -1,6 +1,7 @@
 services:
   web:
-    build: .
+    # build: .
+    image: ghcr.io/vekjja/livingroom.cloud:v0.3.0
     container_name: livingroom-cloud
     ports:
     - "3000:3000"
