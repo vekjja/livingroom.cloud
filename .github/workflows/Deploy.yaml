@@ -1,0 +1,55 @@
+name: Deploy
+
+on:
+  workflow_call:
+    inputs:
+      image_tag:
+        description: Container image tag (matches the Git tag built by Build and Push Image)
+        required: true
+        type: string
+  workflow_dispatch:
+    inputs:
+      image_tag:
+        description: Image tag to deploy (must already exist in the registry)
+        required: true
+        default: latest
+        type: string
+
+jobs:
+  helm-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: GitHub Checkout
+        uses: actions/checkout@v4
+
+      - name: Install kubectl
+        uses: azure/setup-kubectl@v4
+        with:
+          version: v1.31.0
+
+      - name: Install Helm
+        uses: azure/setup-helm@v4
+        with:
+          version: v3.14.4
+
+      # Secret: base64-encoded kubeconfig ( base64 -w0 ~/.kube/config | pbcopy ).
+      - name: Configure kubeconfig
+        env:
+          KUBE_CONFIG_B64: ${{ secrets.KUBE_CONFIG_B64 }}
+        run: |
+          mkdir -p ~/.kube
+          umask 077
+          echo "$KUBE_CONFIG_B64" | base64 -d > ~/.kube/config
+          chmod 600 ~/.kube/config
+
+      - name: Helm dependency build
+        run: helm dependency build ./helm/moonpay-devops-challenge
+
+      # - name: Helm upgrade --install
+      #   run: |
+      #     helm upgrade --install moonpay-devops-challenge \
+      #       --namespace moonpay-devops-challenge --create-namespace \
+      #       ./helm/moonpay-devops-challenge \
+      #       --set image.tag="${{ inputs.image_tag }}"
