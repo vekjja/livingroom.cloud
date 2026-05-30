@@ -12,6 +12,7 @@ COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY prisma ./prisma
 COPY prisma.config.ts ./
 
+RUN corepack enable
 RUN pnpm install --frozen-lockfile
 
 COPY . .
@@ -21,6 +22,7 @@ RUN pnpm build
 FROM node:26-alpine AS runner
 
 RUN apk add --no-cache openssl libc6-compat
+RUN corepack enable
 
 WORKDIR /app
 
