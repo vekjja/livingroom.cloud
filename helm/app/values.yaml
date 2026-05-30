@@ -92,8 +92,6 @@ envFrom:
     name: livingroom-cloud-env
 
 env:
-- name: DATABASE_URL
-  value: 
 - name: NODE_ENV
   value: production
 
