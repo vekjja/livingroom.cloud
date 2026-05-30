@@ -2,6 +2,7 @@
   "name": "livingroom.cloud",
   "version": "0.1.1",
   "private": true,
+  "packageManager": "pnpm@11.5.0",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
