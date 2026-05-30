@@ -1,28 +1,26 @@
-# 1. Build stage
 FROM node:26-alpine AS builder
 
 RUN apk add --no-cache openssl libc6-compat
+RUN npm install -g pnpm
 
 WORKDIR /app
 
-# Prisma config validation requires DATABASE_URL at generate time
 ENV DATABASE_URL="postgresql://postgres:postgres@localhost:5432/postgres"
 
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY prisma ./prisma
 COPY prisma.config.ts ./
 
-RUN corepack enable
 RUN pnpm install --frozen-lockfile
 
 COPY . .
 RUN pnpm build
 
-# 2. Production stage
+
 FROM node:26-alpine AS runner
 
 RUN apk add --no-cache openssl libc6-compat
-RUN corepack enable
+RUN npm install -g pnpm
 
 WORKDIR /app
 
