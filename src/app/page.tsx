@@ -21,11 +21,11 @@ export default async function HomePage() {
         {/* <SignInButton /> */}
         {/* <GitHubButton /> */}
       </Box>
-      <Box margin={"18%"} textAlign="center">
-        <Typography variant="h2" gutterBottom>
+      <Box sx={{ margin: "18%", textAlign: "center" }}>
+        <Typography variant="h2" sx={{ mb: 2 }}>
           Living Room Cloud
         </Typography>
-        <Typography variant="body1" gutterBottom>
+        <Typography variant="body1" sx={{ mb: 2 }}>
           The Cloud Behind The Couch
         </Typography>
         <Box

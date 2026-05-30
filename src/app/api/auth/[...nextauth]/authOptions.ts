@@ -2,17 +2,13 @@ import { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import DiscordProvider from "next-auth/providers/discord";
 // import EmailProvider from "next-auth/providers/email";
-import { PrismaClient } from "@prisma/client";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import { prisma } from "@/lib/prisma";
 import LinkedInProvider, {
   LinkedInProfile,
 } from "next-auth/providers/linkedin";
 
-const globalForPrisma = globalThis as unknown as { prisma: PrismaClient };
-
-export const prisma = globalForPrisma.prisma || new PrismaClient();
-
-if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;
+export { prisma };
 
 //  Redirect URL for OAuth providers
 //  https://localhost:3000/api/auth/callback/[provider]
