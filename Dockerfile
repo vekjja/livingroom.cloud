@@ -20,8 +20,7 @@ RUN pnpm build
 # 2. Production stage
 FROM node:26-alpine AS runner
 
-RUN apk add --no-cache openssl libc6-compat \
-  && corepack enable
+RUN apk add --no-cache openssl libc6-compat
 
 WORKDIR /app
 
