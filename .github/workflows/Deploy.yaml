@@ -45,7 +45,7 @@ jobs:
           chmod 600 ~/.kube/config
 
       - name: Helm dependency build
-        run: helm dependency build ./helm/
+        run: helm dependency build ./helm/app
 
       # - name: Helm upgrade --install
       #   run: |
