@@ -4,6 +4,8 @@ import type { Metadata } from "next";
 import ClientProviders from "./ClientProviders";
 import { Box, Link, Typography } from "@mui/material";
 
+import SignInButton from "./components/SignInButton";
+
 export const metadata: Metadata = {
   title: "Living Room Cloud",
   description: "The Cloud Behind The Couch",
@@ -21,7 +23,8 @@ export default function RootLayout({
           {children}
           {/* Footer / Privacy link */}
           <Box sx={{ width: "100%", textAlign: "center", p: "1rem", mt: "100vh" }}>
-            <Link href="/privacy" color="inherit" underline="none">
+          <SignInButton /> 
+            <Link href="/privacy" color="inherit" underline="none" >
               <Typography variant="body2" sx={{ color: "text.secondary" }}>
                 Privacy Policy
               </Typography>

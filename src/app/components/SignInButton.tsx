@@ -54,9 +54,9 @@ export default function SignInButton() {
           <Avatar sx={{ m: 1, bgcolor: "info.main" }}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
+          {/* <Typography component="h1" variant="h5">
             Sign in
-          </Typography>
+          </Typography> */}
         </DialogTitle>
         <DialogContent>
           {/* <TextField
@@ -89,22 +89,22 @@ export default function SignInButton() {
           >
             {<GoogleIcon />} Sign In with Google
           </Button>
-          <Button
+          {/* <Button
             fullWidth
             variant="contained"
             sx={{ mt: 1, mb: 1 }}
             onClick={() => signIn("discord")}
           >
             {<SportsEsportsIcon />} Sign In with Discord
-          </Button>
-          <Button
+          </Button> */}
+          {/* <Button
             fullWidth
             variant="contained"
             sx={{ mt: 1, mb: 1 }}
             onClick={() => signIn("linkedin")}
           >
             {<LinkedInIcon />} Sign In with LinkedIn
-          </Button>
+          </Button> */}
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="info">

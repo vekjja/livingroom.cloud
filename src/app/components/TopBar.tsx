@@ -32,7 +32,7 @@ export default function TopBar({ session }: TopBarProps) {
               sx={{ marginRight: 2 }}
             />
             <Typography variant="h6" component="div">
-              Welcome, {session.user?.name}
+              {session.user?.name}
             </Typography>
             <Box sx={{ flexGrow: 1 }} />
             <Box
