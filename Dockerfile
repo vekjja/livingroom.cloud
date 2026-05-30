@@ -1,8 +1,7 @@
 # 1. Build stage
-FROM node:25-alpine AS builder
+FROM node:26-alpine AS builder
 
-RUN apk add --no-cache openssl libc6-compat \
-  && corepack enable
+RUN apk add --no-cache openssl libc6-compat
 
 WORKDIR /app
 
@@ -19,7 +18,7 @@ COPY . .
 RUN pnpm build
 
 # 2. Production stage
-FROM node:25-alpine AS runner
+FROM node:26-alpine AS runner
 
 RUN apk add --no-cache openssl libc6-compat \
   && corepack enable
