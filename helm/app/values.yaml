@@ -12,6 +12,37 @@
 #   --docker-password=$GITHUB_PAT \
 #   -n livingroom-cloud
 
+# Bitnami PostgreSQL subchart (https://github.com/bitnami/charts/tree/main/bitnami/postgresql).
+postgresql:
+  enabled: true
+  fullnameOverride: livingroom-cloud-psql
+
+  image:
+    pullPolicy: IfNotPresent
+    debug: true
+
+  auth:
+    postgresPassword: postgres
+    database: livingroom-cloud
+
+  volumePermissions:
+    enabled: true
+
+  primary:
+    persistence:
+      enabled: true
+      size: 1Gi
+      storageClass: local-path
+
+    resourcesPreset: none
+    resources:
+      requests:
+        cpu: 250m
+        memory: 512Mi
+      limits:
+        cpu: 500m
+        memory: 1Gi
+
 # This will set the replicaset count more information can be found here: https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/
 replicaCount: 1
 
@@ -61,6 +92,8 @@ envFrom:
     name: livingroom-cloud-env
 
 env:
+- name: DATABASE_URL
+  value: 
 - name: NODE_ENV
   value: production
 
