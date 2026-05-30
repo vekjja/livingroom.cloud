@@ -22,7 +22,9 @@ postgresql:
     debug: true
 
   auth:
-    postgresPassword: postgres
+    existingSecret: livingroom-cloud-env
+    secretKeys:
+      adminPasswordKey: POSTGRES_PASSWORD
     database: livingroom-cloud
 
   volumePermissions:
@@ -84,7 +86,7 @@ externalSecret:
   name: livingroom-cloud-env
   secretStoreName: gcp-secret-manager
   secretStoreKind: ClusterSecretStore
-  remoteSecretName: livingroom-cloud
+  remoteSecretName: livingroom-cloud-env
   refreshInterval: 1h
 
 envFrom:
