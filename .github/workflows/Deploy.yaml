@@ -45,11 +45,11 @@ jobs:
           chmod 600 ~/.kube/config
 
       - name: Helm dependency build
-        run: helm dependency build ./helm/moonpay-devops-challenge
+        run: helm dependency build ./helm/
 
       # - name: Helm upgrade --install
       #   run: |
-      #     helm upgrade --install moonpay-devops-challenge \
-      #       --namespace moonpay-devops-challenge --create-namespace \
-      #       ./helm/moonpay-devops-challenge \
+      #     helm upgrade --install APP_NAME \
+      #       --namespace APP_NAMESPACE --create-namespace \
+      #       ./helm/APP_NAME \
       #       --set image.tag="${{ inputs.image_tag }}"
