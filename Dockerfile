@@ -37,4 +37,4 @@ COPY --from=builder /app/prisma.config.ts ./
 
 EXPOSE 3000
 
-CMD ["pnpm", "run", "start"]
+CMD ["pnpm", "start"]
