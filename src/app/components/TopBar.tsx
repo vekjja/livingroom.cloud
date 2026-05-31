@@ -26,11 +26,7 @@ export default function TopBar({ session }: TopBarProps) {
       <AppBar position="fixed">
         <Toolbar>
           <Box sx={{ display: "flex", alignItems: "center", width: "100%" }}>
-            {/* <Typography variant="h6" component="div">
-              {session.user?.name}
-            </Typography> */}
-
-<Box
+            <Box
               sx={{
                 width: "100px",
                 height: "90px",
