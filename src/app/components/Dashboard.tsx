@@ -2,9 +2,9 @@
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
 import { redirect } from "next/navigation";
-import TopBar from "../components/TopBar";
+import TopBar from "./TopBar";
 import { Box } from "@mui/material";
-import OpenAIChat from "../components/OpenAIChat";
+import OpenAIChat from "./OpenAIChat";
 import Cloud from "../three/Cloud";
 
 export default async function Dashboard() {
@@ -19,9 +19,7 @@ export default async function Dashboard() {
     <Box>
       <TopBar session={session} />
       <Cloud />
-      <Box sx={{ padding: 2 }}>
-        <OpenAIChat />
-      </Box>
+      <OpenAIChat />
     </Box>
   );
 }

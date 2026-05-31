@@ -1,32 +1,36 @@
+// src/app/page.tsx
+
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
-import { redirect } from "next/navigation";
+
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
-// import SignInButton from "./components/SignInButton";
-// import GitHubButton from "./components/GitHubButton";
+
 import Cloud from "./three/Cloud";
+import Dashboard from "./components/Dashboard";
 
 export default async function HomePage() {
   const session = await getServerSession(authOptions);
 
   if (session) {
-    redirect("/dashboard");
+    return <Dashboard />;
   }
 
   return (
     <Box>
       <Box sx={{ display: "flex", alignItems: "center", width: "100%" }}>
         <Box sx={{ flexGrow: 1 }} />
-        {/* <GitHubButton /> */}
       </Box>
+
       <Box sx={{ margin: "18%", textAlign: "center" }}>
         <Typography variant="h2" sx={{ mb: 2 }}>
           Living Room Cloud
         </Typography>
+
         <Typography variant="body1" sx={{ mb: 2 }}>
           The Cloud Behind The Couch
         </Typography>
+
         <Box
           sx={{
             width: "100%",
