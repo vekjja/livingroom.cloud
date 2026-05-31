@@ -26,16 +26,11 @@ export default function TopBar({ session }: TopBarProps) {
       <AppBar position="fixed">
         <Toolbar>
           <Box sx={{ display: "flex", alignItems: "center", width: "100%" }}>
-            <Avatar
-              src={session.user?.image || ""}
-              alt={session.user?.name || ""}
-              sx={{ marginRight: 2 }}
-            />
-            <Typography variant="h6" component="div">
+            {/* <Typography variant="h6" component="div">
               {session.user?.name}
-            </Typography>
-            <Box sx={{ flexGrow: 1 }} />
-            <Box
+            </Typography> */}
+
+<Box
               sx={{
                 width: "100px",
                 height: "90px",
@@ -46,8 +41,14 @@ export default function TopBar({ session }: TopBarProps) {
                 transform: isSmallScreen ? "translateX(-50%)" : "none",
               }}
             >
-              <Cloud alpha={true} />
+            <Cloud alpha={true} />
             </Box>
+            <Box sx={{ flexGrow: 1 }} />
+            <Avatar
+              src={session.user?.image || ""}
+              alt={session.user?.name || ""}
+              sx={{ marginRight: 2 }}
+            />
             <DonateButton />
             <SignOutButton />
           </Box>
