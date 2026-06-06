@@ -1,16 +1,18 @@
 # Default values for livingroom.cloud.
 # This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-# helm upgrade --install livingroom-cloud . \
-# --namespace livingroom-cloud \
-# --create-namespace \
-# -f values.yaml 
+
 # Create image pull secret in namespace 
 # kubectl create secret docker-registry ghcr-secret \
 #   --docker-server=ghcr.io \
 #   --docker-username=vekjja \
 #   --docker-password=$GITHUB_PAT \
 #   -n livingroom-cloud
+
+# Declare variables to be passed into your templates.
+# helm upgrade --install livingroom-cloud . \
+# --namespace livingroom-cloud \
+# --create-namespace \
+# -f values.yaml 
 
 # Bitnami PostgreSQL subchart (https://github.com/bitnami/charts/tree/main/bitnami/postgresql).
 postgresql:
@@ -59,7 +61,7 @@ imagePullSecrets:
 nameOverride: ""
 fullnameOverride: ""
 
-# This section builds out the srvice account more information can be found here: https://kubernetes.io/docs/concepts/security/service-accounts/
+# This section builds out the service account more information can be found here: https://kubernetes.io/docs/concepts/security/service-accounts/
 serviceAccount:
   create: true
   automount: true
