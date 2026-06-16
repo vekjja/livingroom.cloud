@@ -1,35 +1,56 @@
-// src/app/layout.tsx (server component)
+// src/app/layout.tsx
+
 import "./globals.css";
 import type { Metadata } from "next";
+import Link from "next/link";
 import ClientProviders from "./ClientProviders";
-import { Box, Link, Typography } from "@mui/material";
-
+import { Box, Typography } from "@mui/material";
 import SignInButton from "./components/SignInButton";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
 
 export const metadata: Metadata = {
   title: "Living Room Cloud",
   description: "The Cloud Behind The Couch",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const session = await getServerSession(authOptions);
+
   return (
     <html lang="en">
       <body>
         <ClientProviders>
           {children}
-          {/* Footer / Privacy link */}
-          <Box sx={{ width: "100%", textAlign: "center", p: "1rem", mt: "100vh" }}>
-          <SignInButton /> 
-            <Link href="/privacy" color="inherit" underline="none" >
-              <Typography variant="body2" sx={{ color: "text.secondary" }}>
-                Privacy Policy
-              </Typography>
-            </Link>
-          </Box>
+
+          {!session && (
+            <Box
+              sx={{
+                width: "100%",
+                textAlign: "center",
+                p: "1rem",
+                mt: "100vh",
+              }}
+            >
+              <SignInButton />
+
+              <Link
+                href="/privacy"
+                style={{
+                  textDecoration: "none",
+                  color: "inherit",
+                }}
+              >
+                <Typography variant="body2" sx={{ color: "text.secondary" }}>
+                  Privacy Policy
+                </Typography>
+              </Link>
+            </Box>
+          )}
         </ClientProviders>
       </body>
     </html>
